@@ -9,7 +9,7 @@ local_settings.py
 secret_key.txt
 
 # Virtual environments
-geronforu
+geronforu/
 venv/
 env/
 *.env
