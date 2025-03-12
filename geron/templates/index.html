@@ -1,0 +1,16 @@
+{% extends "base.html"%} {% block title%} Geron {% endblock %}
+{% block content %}
+<h2>Geron</h2>
+
+{% if user.is_authenticated %} 
+    <form action="{% url 'logout' %}" method="POST">
+        <p>Привет {{ user.username }} </p>
+        {% csrf_token %}
+        <button><a href="{% url 'profile' %}"></a></button>
+        <button type="submit">Выйти</button>
+    </form>
+    {% else %}
+        <p>Привет!</p>
+        <p><a href="{% url 'login' %}">Войти</a> <a href="{% url 'register' %}">Зарегистрировать</a></p>
+    {% endif %}
+{% endblock %}

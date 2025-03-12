@@ -1,0 +1,27 @@
+{% extends "base.html"%} {% block title%} Lessons {% endblock %}
+{% block content %}
+
+<h2>Ваш профиль</h2>
+
+<p><strong>Логин:</strong> {{ user.username }}</p>
+<p><strong>Почта:</strong> {{ user.email }}</p>
+
+{% if memberships.exists %}
+    <h3>Описание Вашего плана обучения</h3>
+    <ul>
+        {% for membership in memberships %}
+            <li>
+                <strong>ФИО Родителя:</strong> {{ membership.parent_name }}<br>
+                <strong>ФИО ученика:</strong> {{ membership.child_name }}<br>
+                <strong>Начало занятий:</strong> {{ membership.start_date }}<br>
+                <strong>План обучения:</strong> {{ membership.get_membership_type_display }}<br>
+                <strong>Цена:</strong> ${{ membership.price }}<br>
+                <strong>Конец обучения:</strong> {{ membership.end_date }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Вы еще не оформили заявку на план обучения.</p>
+{% endif %}
+
+{% endblock %}
