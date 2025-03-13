@@ -1,27 +1,34 @@
-{% extends "base.html"%} {% block title%} Lessons {% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Ваш профиль{% endblock %}
+{% block menu %} 
+<div class="menu-button"><button><a href="{% url 'home' %}">На главную</a></button></div>
+{% endblock %}
 {% block content %}
+   <div class="profile">
+        <div class="profile-inner">
+            <h2>Ваш профиль</h2>
 
-<h2>Ваш профиль</h2>
+            <p><strong>Логин:</strong> {{ user.username }}</p>
+            <p><strong>Почта:</strong> {{ user.email }}</p>
 
-<p><strong>Логин:</strong> {{ user.username }}</p>
-<p><strong>Почта:</strong> {{ user.email }}</p>
-
-{% if memberships.exists %}
-    <h3>Описание Вашего плана обучения</h3>
-    <ul>
-        {% for membership in memberships %}
-            <li>
-                <strong>ФИО Родителя:</strong> {{ membership.parent_name }}<br>
-                <strong>ФИО ученика:</strong> {{ membership.child_name }}<br>
-                <strong>Начало занятий:</strong> {{ membership.start_date }}<br>
-                <strong>План обучения:</strong> {{ membership.get_membership_type_display }}<br>
-                <strong>Цена:</strong> ${{ membership.price }}<br>
-                <strong>Конец обучения:</strong> {{ membership.end_date }}<br>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Вы еще не оформили заявку на план обучения.</p>
-{% endif %}
-
+            {% if memberships.exists %}
+            <h3>Описание Вашего плана обучения</h3>
+            <ul>
+                {% for membership in memberships %}
+                    <li>
+                        <strong>ФИО Родителя:</strong> {{ membership.parent_name }}<br>
+                        <strong>ФИО ученика:</strong> {{ membership.child_name }}<br>
+                        <strong>Начало занятий:</strong> {{ membership.start_date }}<br>
+                        <strong>Конец обучения:</strong> {{ membership.end_date }}<br>
+                        <strong>План обучения:</strong> {{ membership.get_membership_type_display }}<br>
+                        <strong>Цена:</strong> {{ membership.price }} ₽<br>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>Вы еще не оформили заявку на план обучения.</p>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,16 +1,16 @@
 {% extends "base.html"%} {% block title%} Geron {% endblock %}
-{% block content %}
-<h2>Geron</h2>
-
+{% block menu %}
 {% if user.is_authenticated %} 
     <form action="{% url 'logout' %}" method="POST">
         <p>Привет {{ user.username }} </p>
         {% csrf_token %}
-        <button><a href="{% url 'profile' %}"></a></button>
-        <button type="submit">Выйти</button>
+        <div class="menu-button"><button><a href="{% url 'lessons' %}">Оформить заказ</a></button></div>
+        <div class="menu-button"><button><a href="{% url 'profile' %}">Профиль</a></button></div>
+        <div class="menu-button"><button type="submit">Выйти</button></div>
     </form>
     {% else %}
-        <p>Привет!</p>
-        <p><a href="{% url 'login' %}">Войти</a> <a href="{% url 'register' %}">Зарегистрировать</a></p>
+        <div class="menu-button">
+            <button><a href="{% url 'login' %}">Войти</a> <a href="{% url 'register' %}">Зарегистрировать</a></button>
+        </div>
     {% endif %}
 {% endblock %}

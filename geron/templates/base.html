@@ -1,12 +1,96 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} Geron {% endblock %}</title>
+    <link rel="stylesheet" href="{%static 'css/styles.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,500,500i" rel="stylesheet">
 </head>
 <body>
-    <h1>Hi</h1>
-    {% block content %} {% endblock %}
+    <header>
+        <div class="header-inner">
+            <div class="header_logo">
+                <div class="Geron">Geron</div>
+            </div>
+            <div class="header_navbar">
+                {% block menu %} 
+                {% endblock %}
+                <div class="mobmenu"><img src="assets/list.png" alt="mobmenu"></div>
+            </div>	
+        </div>	
+    </header>
+    {% block content %}
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Школа программирования <span>Geron</span></h1>
+            <h2>Международное признание сертификатов и высокое качество обучения.</h2>
+            <button><a href="{% url 'lessons' %}">Планы обучения</a></button>
+        </div>
+    </div>
+    <div class="courses">
+        <div class="courses-inner">
+            <div class="course-wrapper">
+                <div class="course">
+                    <div class="course-text">
+                        <div class="course-type">Курс 1 Месяц</div>
+                        <div class="course-price">14 500 руб</div>
+                        <button><a href="{% url 'lessons' %}">Оформить</a></button>
+                    </div>
+                </div>
+                <div class="course">
+                    <div class="course-text">
+                        <div class="course-type">Курс 6 Месяцев</div>
+                        <div class="course-price">16 500 руб</div>
+                        <button><a href="{% url 'lessons' %}">Оформить</a></button>
+                    </div>
+                </div>
+                <div class="course">
+                    <div class="course-text">
+                        <div class="course-type">Курс 1 Год</div>
+                        <div class="course-price">20 000 руб</div>
+                        <button><a href="{% url 'lessons' %}">Оформить</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+    <footer>
+        <div class="footer-inner">
+
+            <div class="footer-block-0">
+                <div class="footer-block-1">
+                    <div class="Geron-2">Geron</div>
+                </div>
+                
+                <div class="footer-block-2">
+                    <div class="footer-block-2-1">
+                        +7 (999) 543-54-54
+                    </div>
+                    <div class="footer-block-2-2">
+                        Телефон компании
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="footer-block-3">
+                <div class="footer-block-4">
+                    <div class="footer-block-4-2">        
+                        <div class="small-text">Geron®</div>
+                        <div class="small-text">All rights reserved</div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-block-4">
+                <div class="footer-block-4-2">        
+                    <div class="small-text">Geron®</div>
+                    <div class="small-text">All rights reserved</div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

@@ -20,8 +20,7 @@ db.sqlite3
 # Media files
 /media
 
-# Static files
-/static
+
 
 # IDE-specific files (example for VS Code)
 .vscode/

@@ -1,0 +1,10 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #2C2D35;
+    background-color: firebrick;
+}

@@ -6,11 +6,6 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, "index.html")
 
-def lessons(request):
-    if request.user.is_authenticated:
-        return render(request, "lessons.html")
-    else:
-        return redirect("home")
 
 @login_required
 def lessons_view(request):
@@ -24,6 +19,7 @@ def lessons_view(request):
             membership.user = request.user
             membership.save()
             return redirect('profile')
+    else:
         form = MembershipForm()
 
     return render(request, 'lessons.html', {'form': form})
