@@ -4,58 +4,60 @@
 
 {% block content %}
     <h2>Запись на занятия</h2>
-
-    <form method="POST" id="membership-form">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="id_parent_name">ФИО родителя:</label>
-            {{ form.parent_name }}
-            {% if form.parent_name.errors %}
-                <div class="error">{{ form.parent_name.errors }}</div>
-            {% endif %}
-        </div>
-        <div class="form-group">
-            <label for="id_child_name">ФИО ученика:</label>
-            {{ form.child_name }}
-            {% if form.child_name.errors %}
-                <div class="error">{{ form.child_name.errors }}</div>
-            {% endif %}
-        </div>
-
-        <div class="form-group">
-            <label for="id_membership_type">План обучения:</label>
-            {{ form.membership_type }}
-            {% if form.membership_type.errors %}
-                <div class="error">{{ form.membership_type.errors }}</div>
-            {% endif %}
-        </div>
-        <div class="form-group">
-            <label for="id_start_date">Дата начала:</label>
-            {{ form.start_date }}
-            {% if form.start_date.errors %}
-                <div class="error">{{ form.start_date.errors }}</div>
-            {% endif %}
-        </div>
-
-        <div class="form-group" id="price-container" style="display: none;">
-            <label for="id_price">Цена:</label>
-            <span id="id_price"></span>
-        </div>
-
-        <div class="form-errors">
-            {% if form.errors %}
-                <ul>
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
+    <div class="register-form">
+        <form method="POST" id="membership-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_parent_name">ФИО родителя:</label>
+                {{ form.parent_name }}
+                {% if form.parent_name.errors %}
+                    <div class="error">{{ form.parent_name.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_child_name">ФИО ученика:</label>
+                {{ form.child_name }}
+                {% if form.child_name.errors %}
+                    <div class="error">{{ form.child_name.errors }}</div>
+                {% endif %}
+            </div>
+    
+            <div class="form-group">
+                <label for="id_membership_type">План обучения:</label>
+                {{ form.membership_type }}
+                {% if form.membership_type.errors %}
+                    <div class="error">{{ form.membership_type.errors }}</div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_start_date">Дата начала:</label>
+                {{ form.start_date }}
+                {% if form.start_date.errors %}
+                    <div class="error">{{ form.start_date.errors }}</div>
+                {% endif %}
+            </div>
+    
+            <div class="form-group" id="price-container" style="display: none;">
+                <label for="id_price">Цена:</label>
+                <span id="id_price"></span>
+            </div>
+    
+            <div class="form-errors">
+                {% if form.errors %}
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
-
-        <button type="submit" class="btn btn-primary">Оформить</button>
-    </form>
+                    </ul>
+                {% endif %}
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Оформить</button>
+        </form>
+    </div>
+    
 
     <script type="text/javascript">
         function updatePrice() {

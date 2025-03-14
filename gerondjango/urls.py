@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import registration_view
+from geron import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("geron.urls")),
-    path("lessons", include("geron.urls")),
-    path("profile", include("geron.urls")),
+    path("lessons", views.lessons_view, name="lessons"),
+    path("profile", views.profile_view, name="profile"),
     path("accounts/", include("django.contrib.auth.urls")),
     path("accounts/register", registration_view, name="register")
 ]

@@ -1,16 +1,21 @@
 {% extends "base.html"%} {% block title%} Geron {% endblock %}
 {% block menu %}
 {% if user.is_authenticated %} 
-    <form action="{% url 'logout' %}" method="POST">
-        <p>Привет {{ user.username }} </p>
-        {% csrf_token %}
-        <div class="menu-button"><button><a href="{% url 'lessons' %}">Оформить заказ</a></button></div>
-        <div class="menu-button"><button><a href="{% url 'profile' %}">Профиль</a></button></div>
-        <div class="menu-button"><button type="submit">Выйти</button></div>
-    </form>
+    <div class="index-form">
+        <form action="{% url 'logout' %}" method="POST">
+            <p>Привет {{ user.username }} </p>
+            {% csrf_token %}
+            <div class="menu-button"><button><a href="{% url 'lessons' %}">Оформить заказ</a></button></div>
+            <div class="menu-button"><button><a href="{% url 'profile' %}">Профиль</a></button></div>
+            <div class="menu-button"><button type="submit">Выйти</button></div>
+        </form>
+    </div>
     {% else %}
         <div class="menu-button">
-            <button><a href="{% url 'login' %}">Войти</a> <a href="{% url 'register' %}">Зарегистрировать</a></button>
+            <button><a href="{% url 'login' %}">Войти</a></button>
+        </div>
+        <div class="menu-button">
+            <button><a href="{% url 'register' %}">Зарегистрировать</a></button>
         </div>
     {% endif %}
 {% endblock %}
