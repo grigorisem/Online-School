@@ -3,18 +3,17 @@
 {% block title %}Запись на занятия{% endblock %}
 
 {% block content %}
-    <h2>Запись на занятия</h2>
-    <div class="register-form">
-        <form method="POST" id="membership-form">
+    <div class="register-form"  style=" height: 700px; display: flex; justify-content: center;">
+        <form method="POST" id="membership-form"  style=" height: 700px; display: flex; justify-content: center;">
             {% csrf_token %}
-            <div class="form-group">
+            <div class="form-group" style="display: flex; justify-content: center;">
                 <label for="id_parent_name">ФИО родителя:</label>
                 {{ form.parent_name }}
                 {% if form.parent_name.errors %}
                     <div class="error">{{ form.parent_name.errors }}</div>
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display: flex; justify-content: center;">
                 <label for="id_child_name">ФИО ученика:</label>
                 {{ form.child_name }}
                 {% if form.child_name.errors %}
@@ -22,14 +21,14 @@
                 {% endif %}
             </div>
     
-            <div class="form-group">
+            <div class="form-group" style="display: flex; justify-content: center;">
                 <label for="id_membership_type">План обучения:</label>
                 {{ form.membership_type }}
                 {% if form.membership_type.errors %}
                     <div class="error">{{ form.membership_type.errors }}</div>
                 {% endif %}
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display: flex; justify-content: center;">
                 <label for="id_start_date">Дата начала:</label>
                 {{ form.start_date }}
                 {% if form.start_date.errors %}
@@ -37,9 +36,9 @@
                 {% endif %}
             </div>
     
-            <div class="form-group" id="price-container" style="display: none;">
+            <div class="form-group" id="price-container" style="display: flex; justify-content: center;">
                 <label for="id_price">Цена:</label>
-                <span id="id_price"></span>
+                <label id="id_price"></span>
             </div>
     
             <div class="form-errors">
@@ -54,7 +53,7 @@
                 {% endif %}
             </div>
     
-            <button type="submit" class="btn btn-primary">Оформить</button>
+            <div class="btn" style="display: flex; justify-content: center;"><button type="submit" class="btn btn-primary" style="display: flex; justify-content: center;">Оформить</button> </div>
         </form>
     </div>
     
@@ -67,28 +66,24 @@
             let priceText = '';
             switch (membershipType) {
                 case '1_month':
-                    priceText = '10000 тг';
+                    priceText = '10000 тенге';
                     break;
                 case '3_months':
-                    priceText = '30000 тг';
+                    priceText = '30000 тенге';
                     break;
                 case '6_months':
-                    priceText = '60000 тг';
+                    priceText = '60000 тенге';
                     break;
                 case '1_year':
-                    priceText = '110000 тг';
+                    priceText = '110000 тенге';
                     break;
                 default:
                     priceText = '';
             }
-
-            if (priceText) {
-                priceContainer.style.display = 'block';
-                priceSpan.textContent = priceText;
-            } else {
-                priceContainer.style.display = 'none';
-            }
+            
+            priceSpan.textContent = priceText;
         }
+
         document.getElementById('id_membership_type').addEventListener('change', updatePrice);
         updatePrice();
     </script>

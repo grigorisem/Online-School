@@ -27,8 +27,8 @@ def lessons_view(request):
 @login_required
 def profile_view(request):
     memberships = Membership.objects.filter(user=request.user)
-    if not memberships.exists():
-        return redirect('lessons')
+    #if not memberships.exists():
+        #return redirect('lessons')
     return render(request, "profile.html", {
         'user': request.user,
         'memberships': memberships

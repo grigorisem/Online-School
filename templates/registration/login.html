@@ -1,11 +1,11 @@
 {% extends "base.html"%} 
 {% block title%} Login {% endblock %}
 {% block content %}
-<div class="register-form">
-    <form method="post" action="{% url 'login'%}">
+<div class="register-form" style=" height: 700px; display: flex; justify-content: center;">
+    <form method="post" action="{% url 'login'%}" style=" height: 700px; display: flex; justify-content: center;">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Login</button>
+        <div class="btn" style="display: flex; justify-content: center;"><button type="submit">Login</button></div>
     </form>
 </div>
 {% endblock %}

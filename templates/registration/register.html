@@ -1,12 +1,12 @@
 {% extends "base.html"%} 
 {% block title%} Register {% endblock %}
 {% block content %}
-<div class="register-form">
-    <form method="post" action="{% url 'register'%}">
+<div class="register-form" style="height: 700px; display: flex; justify-content: center;">
+    <form method="post" action="{% url 'register'%}" style=" height: 700px; display: flex; justify-content: center;">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Зарегистрироваться</button>
-        <a href="{% url 'login' %}">Уже есть аккаунт?</a>
+        <div class="btn" style="display: flex; justify-content: center;"><button type="submit">Зарегистрироваться</button></div>
+        <div class="login-url" style="display: flex; justify-content: center;"><a href="{% url 'login' %}">Уже есть аккаунт?</a></div>
     </form>
 </div>
 

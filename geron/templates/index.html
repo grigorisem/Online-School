@@ -2,7 +2,7 @@
 {% block menu %}
 {% if user.is_authenticated %} 
     <div class="index-form">
-        <form action="{% url 'logout' %}" method="POST">
+        <form action="{% url 'logout' %}" method="POST" style="display: flex;">
             <p>Привет {{ user.username }} </p>
             {% csrf_token %}
             <div class="menu-button"><button><a href="{% url 'lessons' %}">Оформить заказ</a></button></div>
